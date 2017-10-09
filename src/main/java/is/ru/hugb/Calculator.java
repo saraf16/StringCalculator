@@ -3,12 +3,13 @@ package is.ru.Calculator;
 public class Calculator {
 	
 	public static int add(String text){
-		if(text.equals("")){
+		String new_text = text.replaceAll("\\n", ",");
+		if(new_text.equals("")){
 			return 0;
 		}
 		else{
 			if(text.contains(",")){
-				String numbers[] = text.split(",");
+				String numbers[] = new_text.split(",");
 				return sum(numbers);
 			}
 			return 1;
