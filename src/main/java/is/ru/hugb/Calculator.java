@@ -27,16 +27,12 @@ public class Calculator {
 		String neg = "";
 		boolean negativ = false;
 		for(String n : numbers){
+			if(toInt(n) > 1000){
+				continue;
+			}
 			if(toInt(n) < 0){
-				if(neg.isEmpty()){
-					neg += n;
-					negativ = true;
-				}
-				else{
-					neg += "," + n;
-					negativ = true;
-				}
-
+				neg = negatives(neg, n);
+				negativ = true;
 			}
 			else{
 				total += toInt(n);
@@ -48,6 +44,16 @@ public class Calculator {
 
 		}
 		return total;
+	}
+
+	private static String negatives(String negativs, String n){
+		if(negativs.isEmpty()){
+			negativs += n;
+		}
+		else{
+			negativs += "," + n;
+		}
+		return negativs;
 	}
 
 
