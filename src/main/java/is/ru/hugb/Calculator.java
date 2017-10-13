@@ -3,17 +3,26 @@ package is.ru.Calculator;
 public class Calculator {
 	
 	public static int add(String text){
-		String new_text = text.replaceAll("\\n", ",");
+		String delimiter = "\\n";
+		String sub = text;
 
-		if(new_text.equals("")){
+		if(text.startsWith("//"))
+		{
+			delimiter = text.substring(2,3);
+
+			sub = text.substring(4);
+		}
+		//String new_text = sub.replaceAll("\\n", ",");
+
+		if(text.equals("")){
 			return 0;
 		}
 		else{
-			if(text.contains(",")){
-				String numbers[] = new_text.split(",");
+			if(text.contains(",") || text.contains(delimiter)){
+				String numbers[] = sub.split(",|" + delimiter);
 				return sum(numbers);
 			}
-			return toInt(new_text);
+			return toInt(text);
 		}
 		
 	}
@@ -41,7 +50,6 @@ public class Calculator {
 
 		if(negativ){
 			throw new IllegalArgumentException("Negatives not allowed: " + neg);
-
 		}
 		return total;
 	}
