@@ -12,7 +12,6 @@ public class Calculator {
 
 			sub = text.substring(4);
 		}
-		//String new_text = sub.replaceAll("\\n", ",");
 
 		if(text.equals("")){
 			return 0;
